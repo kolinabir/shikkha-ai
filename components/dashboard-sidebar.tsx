@@ -34,22 +34,22 @@ interface NavItem {
 
 const navigationItems: NavItem[] = [
   {
-    title: "Home",
+    title: "ড্যাশবোর্ড",
     href: "/dashboard",
     icon: Home,
   },
   {
-    title: "Voice AI Call",
+    title: "AI শিক্ষক",
     href: "/dashboard/voice-ai",
     icon: Phone,
   },
   {
-    title: "Math Solver",
+    title: "গণিত সমাধান",
     href: "/dashboard/math-solver",
     icon: Calculator,
   },
   {
-    title: "Adaptive Practice",
+    title: "অনুশীলন",
     href: "/dashboard/practice",
     icon: Target,
   },
@@ -57,22 +57,22 @@ const navigationItems: NavItem[] = [
 
 const strategyItems: NavItem[] = [
   {
-    title: "Book Reader",
+    title: "বই পড়ুন",
     href: "/dashboard/book-reader",
     icon: FileText,
   },
   {
-    title: "Mock Quiz",
+    title: "কুইজ টেস্ট",
     href: "/dashboard/mock-quiz",
     icon: Lightbulb,
   },
   {
-    title: "Study Analytics",
+    title: "স্টাডি রিপোর্ট",
     href: "/dashboard/analytics",
     icon: TrendingUp,
   },
   {
-    title: "Progress Tracking",
+    title: "অগ্রগতি",
     href: "/dashboard/progress",
     icon: LineChart,
   },
@@ -80,7 +80,7 @@ const strategyItems: NavItem[] = [
 
 const knowledgeItems: NavItem[] = [
   {
-    title: "Resources",
+    title: "রিসোর্স",
     href: "/dashboard/resources",
     icon: Files,
   },
@@ -88,12 +88,12 @@ const knowledgeItems: NavItem[] = [
 
 const searchItems: NavItem[] = [
   {
-    title: "Find Topics",
+    title: "টপিক খুঁজুন",
     href: "/dashboard/search",
     icon: Search,
   },
   {
-    title: "Profile",
+    title: "প্রোফাইল",
     href: "/dashboard/profile",
     icon: User,
   },
@@ -246,22 +246,22 @@ export function DashboardSidebar() {
           {/* Navigation */}
           <nav className="flex-1 overflow-y-auto p-4">
             <CollapsibleSection
-              title="Personal Brand"
+              title="প্রধান মেনু"
               items={navigationItems}
               isCollapsed={isCollapsed}
             />
             <CollapsibleSection
-              title="Strategy & Assets"
+              title="একাডেমিক"
               items={strategyItems}
               isCollapsed={isCollapsed}
             />
             <CollapsibleSection
-              title="Knowledge"
+              title="লাইব্রেরি"
               items={knowledgeItems}
               isCollapsed={isCollapsed}
             />
             <CollapsibleSection
-              title="Search"
+              title="অন্যান্য"
               items={searchItems}
               isCollapsed={isCollapsed}
             />
