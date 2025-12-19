@@ -15,7 +15,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Shikkha AI - AI-Powered Learning Platform",
-  description: "Transform your learning experience with AI-powered tools for Bangla education",
+  description:
+    "Transform your learning experience with AI-powered tools for Bangla education",
 };
 
 export default function RootLayout({

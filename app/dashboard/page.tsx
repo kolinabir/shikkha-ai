@@ -131,9 +131,7 @@ export default async function DashboardPage() {
             <div className="h-12 w-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-200 transition-colors">
               <FileText className="h-6 w-6 text-blue-600" />
             </div>
-            <h3 className="text-lg font-bold text-gray-900 mb-2">
-              Read Books
-            </h3>
+            <h3 className="text-lg font-bold text-gray-900 mb-2">Read Books</h3>
             <p className="text-sm text-gray-600">
               Access NCTB books with AI assistance
             </p>
@@ -173,7 +171,9 @@ export default async function DashboardPage() {
 
       {/* Recent Activity */}
       <div className="bg-white rounded-xl p-6 border border-gray-200">
-        <h2 className="text-xl font-bold text-gray-900 mb-4">Recent Activity</h2>
+        <h2 className="text-xl font-bold text-gray-900 mb-4">
+          Recent Activity
+        </h2>
         <div className="space-y-4">
           <div className="flex items-start space-x-4 pb-4 border-b border-gray-100 last:border-0">
             <div className="h-10 w-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">

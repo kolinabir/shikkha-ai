@@ -105,7 +105,11 @@ interface CollapsibleSectionProps {
   isCollapsed: boolean;
 }
 
-function CollapsibleSection({ title, items, isCollapsed }: CollapsibleSectionProps) {
+function CollapsibleSection({
+  title,
+  items,
+  isCollapsed,
+}: CollapsibleSectionProps) {
   const [isOpen, setIsOpen] = React.useState(true);
   const pathname = usePathname();
 
@@ -143,7 +147,12 @@ function CollapsibleSection({ title, items, isCollapsed }: CollapsibleSectionPro
                 )}
                 title={isCollapsed ? item.title : undefined}
               >
-                <Icon className={cn("h-5 w-5 flex-shrink-0", !isCollapsed && "mr-3")} />
+                <Icon
+                  className={cn(
+                    "h-5 w-5 flex-shrink-0",
+                    !isCollapsed && "mr-3"
+                  )}
+                />
                 {!isCollapsed && <span>{item.title}</span>}
               </Link>
             );
@@ -191,7 +200,9 @@ export function DashboardSidebar() {
             {!isCollapsed && (
               <div className="flex items-center space-x-2">
                 <BookOpen className="h-8 w-8 text-blue-600" />
-                <span className="text-xl font-bold text-gray-900">Shikkha AI</span>
+                <span className="text-xl font-bold text-gray-900">
+                  Shikkha AI
+                </span>
               </div>
             )}
             <button
@@ -201,18 +212,32 @@ export function DashboardSidebar() {
                 isCollapsed && "mx-auto"
               )}
             >
-              <PanelLeft className={cn("h-5 w-5 text-gray-600 transition-transform", isCollapsed && "rotate-180")} />
+              <PanelLeft
+                className={cn(
+                  "h-5 w-5 text-gray-600 transition-transform",
+                  isCollapsed && "rotate-180"
+                )}
+              />
             </button>
           </div>
 
           {/* User Section */}
-          <div className={cn("p-4 border-b border-gray-200", isCollapsed && "flex justify-center")}>
+          <div
+            className={cn(
+              "p-4 border-b border-gray-200",
+              isCollapsed && "flex justify-center"
+            )}
+          >
             <div className="flex items-center space-x-3">
               <UserButton afterSignOutUrl="/" />
               {!isCollapsed && (
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-gray-900 truncate">My Account</p>
-                  <p className="text-xs text-gray-500 truncate">Student Dashboard</p>
+                  <p className="text-sm font-medium text-gray-900 truncate">
+                    My Account
+                  </p>
+                  <p className="text-xs text-gray-500 truncate">
+                    Student Dashboard
+                  </p>
                 </div>
               )}
             </div>
@@ -248,12 +273,15 @@ export function DashboardSidebar() {
               href="/dashboard/settings"
               className={cn(
                 "flex items-center px-3 py-2 text-sm font-medium text-gray-700 rounded-lg hover:bg-gray-100 transition-colors",
-                pathname === "/dashboard/settings" && "bg-blue-50 text-blue-600",
+                pathname === "/dashboard/settings" &&
+                  "bg-blue-50 text-blue-600",
                 isCollapsed && "justify-center"
               )}
               title={isCollapsed ? "Settings" : undefined}
             >
-              <Settings className={cn("h-5 w-5 flex-shrink-0", !isCollapsed && "mr-3")} />
+              <Settings
+                className={cn("h-5 w-5 flex-shrink-0", !isCollapsed && "mr-3")}
+              />
               {!isCollapsed && <span>Settings</span>}
             </Link>
           </div>

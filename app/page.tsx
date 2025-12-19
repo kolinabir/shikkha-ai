@@ -1,5 +1,14 @@
 import { SignInButton, SignUpButton, SignedIn, SignedOut } from "@clerk/nextjs";
-import { BookOpen, Phone, Calculator, Target, FileText, BarChart3, ArrowRight, CheckCircle2 } from "lucide-react";
+import {
+  BookOpen,
+  Phone,
+  Calculator,
+  Target,
+  FileText,
+  BarChart3,
+  ArrowRight,
+  CheckCircle2,
+} from "lucide-react";
 import Link from "next/link";
 
 export default function HomePage() {
@@ -12,7 +21,7 @@ export default function HomePage() {
             <BookOpen className="h-8 w-8 text-blue-600" />
             <span className="text-2xl font-bold text-gray-900">Shikkha AI</span>
           </div>
-          
+
           <div className="flex items-center space-x-4">
             <SignedOut>
               <SignInButton mode="modal">
@@ -45,8 +54,9 @@ export default function HomePage() {
             <span className="text-blue-600">AI-Powered Education</span>
           </h1>
           <p className="text-xl text-gray-600 mb-10 leading-relaxed">
-            Experience personalized learning in Bangla with voice AI assistance, adaptive practice, 
-            and intelligent study tools designed for Bangladeshi students.
+            Experience personalized learning in Bangla with voice AI assistance,
+            adaptive practice, and intelligent study tools designed for
+            Bangladeshi students.
           </p>
           <div className="flex items-center justify-center space-x-4">
             <SignedOut>
@@ -87,23 +97,32 @@ export default function HomePage() {
               <div className="h-12 w-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
                 <Phone className="h-6 w-6 text-blue-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Voice AI Call</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                Voice AI Call
+              </h3>
               <p className="text-gray-600 mb-4">
-                Learn through voice conversations in Bangla. Perfect for rural areas with limited internet. 
-                Practice with mock quizzes through natural voice interaction.
+                Learn through voice conversations in Bangla. Perfect for rural
+                areas with limited internet. Practice with mock quizzes through
+                natural voice interaction.
               </p>
               <ul className="space-y-2">
                 <li className="flex items-start space-x-2">
                   <CheckCircle2 className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-gray-600">Bangla language priority</span>
+                  <span className="text-sm text-gray-600">
+                    Bangla language priority
+                  </span>
                 </li>
                 <li className="flex items-start space-x-2">
                   <CheckCircle2 className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-gray-600">Works with slow internet</span>
+                  <span className="text-sm text-gray-600">
+                    Works with slow internet
+                  </span>
                 </li>
                 <li className="flex items-start space-x-2">
                   <CheckCircle2 className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-gray-600">Interactive mock quizzes</span>
+                  <span className="text-sm text-gray-600">
+                    Interactive mock quizzes
+                  </span>
                 </li>
               </ul>
             </div>
@@ -113,23 +132,32 @@ export default function HomePage() {
               <div className="h-12 w-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
                 <Calculator className="h-6 w-6 text-blue-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Smart Math Solver</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                Smart Math Solver
+              </h3>
               <p className="text-gray-600 mb-4">
-                Take a picture of any math problem and get detailed step-by-step solutions with 
-                AI-generated explanations and alternative approaches.
+                Take a picture of any math problem and get detailed step-by-step
+                solutions with AI-generated explanations and alternative
+                approaches.
               </p>
               <ul className="space-y-2">
                 <li className="flex items-start space-x-2">
                   <CheckCircle2 className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-gray-600">Photo-based problem solving</span>
+                  <span className="text-sm text-gray-600">
+                    Photo-based problem solving
+                  </span>
                 </li>
                 <li className="flex items-start space-x-2">
                   <CheckCircle2 className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-gray-600">Step-by-step explanations</span>
+                  <span className="text-sm text-gray-600">
+                    Step-by-step explanations
+                  </span>
                 </li>
                 <li className="flex items-start space-x-2">
                   <CheckCircle2 className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-gray-600">Alternative solutions</span>
+                  <span className="text-sm text-gray-600">
+                    Alternative solutions
+                  </span>
                 </li>
               </ul>
             </div>
@@ -139,23 +167,32 @@ export default function HomePage() {
               <div className="h-12 w-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
                 <Target className="h-6 w-6 text-blue-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Adaptive Practice</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                Adaptive Practice
+              </h3>
               <p className="text-gray-600 mb-4">
-                AI-generated practice modules that adapt to your skill level. Choose subject, chapter, 
-                and difficulty to get personalized question sets.
+                AI-generated practice modules that adapt to your skill level.
+                Choose subject, chapter, and difficulty to get personalized
+                question sets.
               </p>
               <ul className="space-y-2">
                 <li className="flex items-start space-x-2">
                   <CheckCircle2 className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-gray-600">Subject & chapter-wise practice</span>
+                  <span className="text-sm text-gray-600">
+                    Subject & chapter-wise practice
+                  </span>
                 </li>
                 <li className="flex items-start space-x-2">
                   <CheckCircle2 className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-gray-600">Easy, medium & hard levels</span>
+                  <span className="text-sm text-gray-600">
+                    Easy, medium & hard levels
+                  </span>
                 </li>
                 <li className="flex items-start space-x-2">
                   <CheckCircle2 className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-gray-600">AI-powered suggestions</span>
+                  <span className="text-sm text-gray-600">
+                    AI-powered suggestions
+                  </span>
                 </li>
               </ul>
             </div>
@@ -165,23 +202,32 @@ export default function HomePage() {
               <div className="h-12 w-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
                 <FileText className="h-6 w-6 text-blue-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Interactive Book Reader</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                Interactive Book Reader
+              </h3>
               <p className="text-gray-600 mb-4">
-                Read NCTB books and your own PDFs with an AI chatbot. Highlight text to ask questions, 
-                get explanations, and generate custom quizzes.
+                Read NCTB books and your own PDFs with an AI chatbot. Highlight
+                text to ask questions, get explanations, and generate custom
+                quizzes.
               </p>
               <ul className="space-y-2">
                 <li className="flex items-start space-x-2">
                   <CheckCircle2 className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-gray-600">NCTB books included</span>
+                  <span className="text-sm text-gray-600">
+                    NCTB books included
+                  </span>
                 </li>
                 <li className="flex items-start space-x-2">
                   <CheckCircle2 className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-gray-600">Upload your own PDFs</span>
+                  <span className="text-sm text-gray-600">
+                    Upload your own PDFs
+                  </span>
                 </li>
                 <li className="flex items-start space-x-2">
                   <CheckCircle2 className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-gray-600">AI chatbot assistance</span>
+                  <span className="text-sm text-gray-600">
+                    AI chatbot assistance
+                  </span>
                 </li>
               </ul>
             </div>
@@ -191,23 +237,31 @@ export default function HomePage() {
               <div className="h-12 w-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
                 <BarChart3 className="h-6 w-6 text-blue-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Admin Dashboard</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                Admin Dashboard
+              </h3>
               <p className="text-gray-600 mb-4">
-                Comprehensive dashboard for tracking student progress, analyzing performance, 
-                and providing personalized recommendations.
+                Comprehensive dashboard for tracking student progress, analyzing
+                performance, and providing personalized recommendations.
               </p>
               <ul className="space-y-2">
                 <li className="flex items-start space-x-2">
                   <CheckCircle2 className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-gray-600">User tracking & analytics</span>
+                  <span className="text-sm text-gray-600">
+                    User tracking & analytics
+                  </span>
                 </li>
                 <li className="flex items-start space-x-2">
                   <CheckCircle2 className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-gray-600">Performance scoring</span>
+                  <span className="text-sm text-gray-600">
+                    Performance scoring
+                  </span>
                 </li>
                 <li className="flex items-start space-x-2">
                   <CheckCircle2 className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-gray-600">AI-driven suggestions</span>
+                  <span className="text-sm text-gray-600">
+                    AI-driven suggestions
+                  </span>
                 </li>
               </ul>
             </div>
@@ -217,23 +271,31 @@ export default function HomePage() {
               <div className="h-12 w-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
                 <BookOpen className="h-6 w-6 text-blue-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Smart Learning Path</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                Smart Learning Path
+              </h3>
               <p className="text-gray-600 mb-4">
-                AI creates a personalized learning journey based on your performance, goals, 
-                and learning style for optimal results.
+                AI creates a personalized learning journey based on your
+                performance, goals, and learning style for optimal results.
               </p>
               <ul className="space-y-2">
                 <li className="flex items-start space-x-2">
                   <CheckCircle2 className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-gray-600">Personalized curriculum</span>
+                  <span className="text-sm text-gray-600">
+                    Personalized curriculum
+                  </span>
                 </li>
                 <li className="flex items-start space-x-2">
                   <CheckCircle2 className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-gray-600">Progress tracking</span>
+                  <span className="text-sm text-gray-600">
+                    Progress tracking
+                  </span>
                 </li>
                 <li className="flex items-start space-x-2">
                   <CheckCircle2 className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-gray-600">Adaptive difficulty</span>
+                  <span className="text-sm text-gray-600">
+                    Adaptive difficulty
+                  </span>
                 </li>
               </ul>
             </div>
@@ -249,7 +311,8 @@ export default function HomePage() {
               Ready to Transform Your Learning?
             </h2>
             <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-              Join thousands of students already using Shikkha AI to achieve their academic goals.
+              Join thousands of students already using Shikkha AI to achieve
+              their academic goals.
             </p>
             <SignedOut>
               <SignUpButton mode="modal">
