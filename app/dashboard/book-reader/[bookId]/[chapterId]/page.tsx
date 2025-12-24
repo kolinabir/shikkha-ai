@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { ArrowLeft, MessageSquare, X, Send, Loader2, Sparkles, FileQuestion, FileText, Layers, BarChart3, Star } from 'lucide-react';
-import { getBookById, getChapterById } from '../../_data/books';
+import { getBookById, getChapterById, getDirectPdfUrl } from '../../_data/books';
 import PDFViewer from '../../_components/PDFViewer';
 import ChatSidebar from '../../_components/ChatSidebar';
 import TextSelectionPopup from '../../_components/TextSelectionPopup';
@@ -23,6 +23,15 @@ export default function ChapterReaderPage() {
 
   const book = getBookById(bookId);
   const chapter = getChapterById(bookId, chapterId);
+
+  // Convert Google Drive URLs to direct PDF links if needed
+  const pdfUrl = chapter
+    ? (chapter.isExternal && chapter.pdfPath.includes('drive.google.com')
+        ? getDirectPdfUrl(chapter.pdfPath)
+        : chapter.pdfPath.startsWith('http')
+        ? chapter.pdfPath
+        : chapter.pdfPath)
+    : '';
 
   // Get last read page from Redux
   const lastReadPage = useAppSelector(
@@ -363,7 +372,7 @@ export default function ChapterReaderPage() {
         <ResizablePanels
           leftPanel={
             <PDFViewer
-              pdfPath={chapter.pdfPath}
+              pdfPath={pdfUrl}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
               viewMode={viewMode}
