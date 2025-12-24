@@ -8,23 +8,34 @@ import PDFViewer from '../../_components/PDFViewer';
 import ChatSidebar from '../../_components/ChatSidebar';
 import TextSelectionPopup from '../../_components/TextSelectionPopup';
 import ResizablePanels from '../../_components/ResizablePanels';
+import { useAppDispatch, useAppSelector } from '@/lib/store/hooks';
+import { setLastReadPage, updateReadingTime } from '@/lib/store/slices/bookReaderSlice';
 
 export default function ChapterReaderPage() {
   const params = useParams();
   const router = useRouter();
   const bookId = params.bookId as string;
   const chapterId = params.chapterId as string;
+  const dispatch = useAppDispatch();
 
   const book = getBookById(bookId);
   const chapter = getChapterById(bookId, chapterId);
+
+  // Get last read page from Redux
+  const lastReadPage = useAppSelector(
+    (state) => state.bookReader.lastReadPages[`${bookId}/${chapterId}`]
+  );
+
   const [chatOpen, setChatOpen] = useState(false);
   const [selectedText, setSelectedText] = useState<string>('');
   const [showTextPopup, setShowTextPopup] = useState(false);
   const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(lastReadPage || 1);
   const [viewMode, setViewMode] = useState<'page' | 'scroll'>('page');
   const [contextItems, setContextItems] = useState<Array<{ text: string; page: number }>>([]);
   const [pdfScale, setPdfScale] = useState(1.2);
+  const readingStartTime = useRef<number>(Date.now());
+  const lastPageChangeTime = useRef<number>(Date.now());
 
   if (!book || !chapter) {
     return (
@@ -136,6 +147,39 @@ export default function ChapterReaderPage() {
       }, 300);
     }
   };
+
+  // Load last read page on mount
+  useEffect(() => {
+    if (lastReadPage && lastReadPage > 0) {
+      setCurrentPage(lastReadPage);
+    }
+  }, [bookId, chapterId]); // Only run when book/chapter changes
+
+  // Save current page whenever it changes
+  useEffect(() => {
+    if (currentPage > 0 && book && chapter) {
+      dispatch(setLastReadPage({ bookId, chapterId, page: currentPage }));
+
+      // Track reading time (time spent on previous page)
+      const timeSpent = (Date.now() - lastPageChangeTime.current) / 1000;
+      if (timeSpent > 0 && timeSpent < 300) { // Only track if less than 5 minutes (to avoid counting idle time)
+        dispatch(updateReadingTime({ bookId, chapterId, timeSpent }));
+      }
+      lastPageChangeTime.current = Date.now();
+    }
+  }, [currentPage, bookId, chapterId, dispatch]);
+
+  // Track reading time on unmount
+  useEffect(() => {
+    return () => {
+      if (book && chapter) {
+        const totalTimeSpent = (Date.now() - readingStartTime.current) / 1000;
+        if (totalTimeSpent > 0 && totalTimeSpent < 3600) { // Only track if less than 1 hour
+          dispatch(updateReadingTime({ bookId, chapterId, timeSpent: totalTimeSpent }));
+        }
+      }
+    };
+  }, [bookId, chapterId, dispatch]);
 
   useEffect(() => {
     document.addEventListener('mouseup', handleTextSelection);
