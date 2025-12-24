@@ -1,8 +1,10 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import { X, Send, Loader2, Sparkles, FileQuestion, Trash2, Copy, Check } from 'lucide-react';
 import StreamingMessage from './StreamingMessage';
+import QuizGenerator from './QuizGenerator';
 import { getPageQuestions, getRandomSuggestion, PageQuestion } from '@/app/dashboard/book-reader/_data/pageQuestions';
 
 interface Message {
@@ -21,6 +23,7 @@ interface ChatSidebarProps {
   currentPage: number;
   chapterTitle: string;
   chapterId?: string;
+  bookId?: string;
   pdfScale?: number;
   onClearContext: () => void;
   onAddContext?: (text: string, page: number) => void;
@@ -33,6 +36,7 @@ export default function ChatSidebar({
   currentPage,
   chapterTitle,
   chapterId = 'ch1',
+  bookId,
   pdfScale = 1.2,
   onClearContext,
   onAddContext,
@@ -47,6 +51,8 @@ export default function ChatSidebar({
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [lastLoadedPage, setLastLoadedPage] = useState<number | null>(null);
+  const [showQuizGenerator, setShowQuizGenerator] = useState(false);
+  const router = useRouter();
 
   // Listen for askAI events
   useEffect(() => {
@@ -333,35 +339,9 @@ export default function ChatSidebar({
             ))}
             <button
               onClick={() => {
-                // Generate quiz
-                const quizMessage: Message = {
-                  id: Date.now().toString(),
-                  role: 'user',
-                  content: 'এই পৃষ্ঠার জন্য একটি কুইজ তৈরি করুন',
-                  timestamp: new Date(),
-                };
-                setMessages([quizMessage]);
-                setIsLoading(true);
-                const quizResponseText = generateMockQuiz(currentPage);
-                const quizResponseId = (Date.now() + 1).toString();
-                const quizResponse: Message = {
-                  id: quizResponseId,
-                  role: 'assistant',
-                  content: quizResponseText,
-                  timestamp: new Date(),
-                  isStreaming: true,
-                };
-                setMessages([quizMessage, quizResponse]);
-
-                setTimeout(() => {
-                  setMessages(prev => prev.map(msg =>
-                    msg.id === quizResponseId
-                      ? { ...msg, isStreaming: false }
-                      : msg
-                  ));
-                  setIsLoading(false);
-                  setSuggestedQuestions([]);
-                }, 1000 + quizResponseText.length * 30 + 500);
+                if (bookId && chapterId) {
+                  setShowQuizGenerator(true);
+                }
               }}
               className="w-full text-left font-semibold text-indigo-700 bg-indigo-100 p-2 rounded border border-indigo-300 hover:bg-indigo-200 transition-colors flex items-center gap-2 bengali-text"
               style={{ fontSize: `${chatFontSize}px`, lineHeight: '1.5' }}
@@ -445,6 +425,18 @@ export default function ChatSidebar({
 
         <div ref={messagesEndRef} />
       </div>
+
+      {/* Quiz Generator Modal */}
+      {showQuizGenerator && (
+        <QuizGenerator
+          onComplete={() => {
+            setShowQuizGenerator(false);
+            if (bookId && chapterId) {
+              router.push(`/dashboard/book-reader/${bookId}/${chapterId}/quiz?page=${currentPage}`);
+            }
+          }}
+        />
+      )}
 
       {/* Input */}
       <div className="border-t border-gray-200 p-4 bg-gray-50">

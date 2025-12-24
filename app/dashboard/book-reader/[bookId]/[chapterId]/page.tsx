@@ -381,6 +381,7 @@ export default function ChapterReaderPage() {
               currentPage={currentPage}
               chapterTitle={chapter.title}
               chapterId={chapterId}
+              bookId={bookId}
               pdfScale={pdfScale}
               onClearContext={() => setContextItems([])}
               onAddContext={(text, page) => {
