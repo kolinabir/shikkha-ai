@@ -159,7 +159,7 @@ export default function MathSolverPage() {
             </div>
             Math Solver <span className="text-xs bg-indigo-100 text-indigo-700 px-2 py-1 rounded-full font-bold tracking-wider">PRO</span>
           </h1>
-          <p className="text-slate-500 mt-1 ml-14 text-sm font-medium">System v2.0 • Powered by Wolfram Engine</p>
+          
         </div>
       </div>
 
