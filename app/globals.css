@@ -8,6 +8,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-bengali: var(--font-bengali);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -121,5 +122,123 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-bengali), var(--font-geist-sans), sans-serif;
   }
+
+  /* Ensure Bengali text renders properly */
+  body {
+    font-family: var(--font-bengali), var(--font-geist-sans), sans-serif;
+  }
+
+  [lang="bn"],
+  .bengali-text,
+  *:lang(bn) {
+    font-family: var(--font-bengali), sans-serif;
+    font-feature-settings: "kern" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Auto-detect Bengali characters and apply font */
+  :not([class*="mono"]):not([class*="code"]):not(pre):not(code) {
+    font-family: var(--font-bengali), var(--font-geist-sans), sans-serif;
+  }
+}
+
+/* React-PDF Styles */
+.react-pdf__Page {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  position: relative;
+}
+
+.react-pdf__Page__canvas {
+  max-width: 100%;
+  height: auto !important;
+  display: block;
+}
+
+.react-pdf__Page__textContent {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  opacity: 0.2;
+  line-height: 1;
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  pointer-events: auto;
+  z-index: 2;
+}
+
+.react-pdf__Page__textContent span {
+  color: transparent;
+  position: absolute;
+  white-space: pre;
+  cursor: text;
+  transform-origin: 0% 0%;
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+}
+
+/* Better selection visibility for PDF text */
+.react-pdf__Page__textContent {
+  opacity: 0.2;
+}
+
+.react-pdf__Page__textContent span::selection {
+  background: rgba(99, 102, 241, 0.7) !important;
+  color: transparent;
+}
+
+.react-pdf__Page__textContent span::-moz-selection {
+  background: rgba(99, 102, 241, 0.7) !important;
+  color: transparent;
+}
+
+.react-pdf__Page__textContent::selection {
+  background: rgba(99, 102, 241, 0.7) !important;
+}
+
+.react-pdf__Page__textContent::-moz-selection {
+  background: rgba(99, 102, 241, 0.7) !important;
+}
+
+/* Override browser default selection for better visibility */
+.react-pdf__Page__textContent *::selection {
+  background: rgba(99, 102, 241, 0.7) !important;
+  color: transparent;
+}
+
+.react-pdf__Page__textContent *::-moz-selection {
+  background: rgba(99, 102, 241, 0.7) !important;
+  color: transparent;
+}
+
+.react-pdf__Page__annotations {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.react-pdf__Page__annotations .annotationLink {
+  pointer-events: auto;
+}
+
+.react-pdf__Document {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
